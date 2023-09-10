@@ -12,3 +12,11 @@ Coming soon:
 * Right click menu to add/remove people to the list
 
 You can report bugs or ask for new features by using the Issues page.
+
+## Example
+
+In this example we add User 1's User ID to the list of people to soft block.
+
+![image](https://github.com/Aida-Enna/Soft-Block-BetterDiscord-Plugin/assets/5483362/9ad1bc38-2f72-4de2-a4c4-f8041caff7d9)
+
+
