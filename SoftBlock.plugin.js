@@ -1,13 +1,13 @@
 /**
  * @name Soft Block
  * @author Aida Enna
- * @version 0.0.1
+ * @version 0.0.2
  * @description This plugin lets you completely hide messages from users whose messages you don't want to see, and without them being able to know you did it. You can also hide their name in the user list.
  * @donate https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QXF8EL4737HWJ
  * @patreon https://www.patreon.com/bePatron?u=5597973
  * @website https://github.com/Aida-Enna
- * @source https://raw.githubusercontent.com/jojos38/Word-Notification-Improved/master/WordNotificationImproved.plugin.js
- * @updateUrl https://raw.githubusercontent.com/jojos38/Word-Notification-Improved/master/WordNotificationImproved.plugin.js
+ * @source https://github.com/Aida-Enna/Soft-Block-BetterDiscord-Plugin/tree/main
+ * @updateUrl https://raw.githubusercontent.com/Aida-Enna/Soft-Block-BetterDiscord-Plugin/main/SoftBlock.plugin.js
  */
  
  //Credit for the original basic JS code goes to https://github.com/k4yf0ur/Discord-Soft-Block
@@ -19,7 +19,7 @@ const config = {
 		name: "SoftBlock",
 		id: "SoftBlock",
 		author: "Aida Enna",
-		version: "0.0.1",
+		version: "0.0.2",
 		description: "Completely hide messages from users whose messages you don't want to see"
 	}
 };
@@ -65,6 +65,10 @@ module.exports = class MyPlugin
 		var savedUser = "temp";
 		//User IDs obtainable by right clicking their name and clicking 'copy ID' when you are in discord developer mode
 		var user = settings["users-to-hide"];
+		if (user.length < 1)
+		{
+			return;
+		}
 		var arrayLength = user.length;
 		//We're in a DM, we know cause we can see the DM list!
 		if (document.querySelectorAll('[class^="privateChannels-oVe7HL').length > 0)
@@ -75,6 +79,11 @@ module.exports = class MyPlugin
 			}
 		}
 		for (var i = 0; i < arrayLength; i++) {
+			if (user[i].length < 8)
+			{
+				//Is this really a user ID? If you find one that short, make an issue.
+				return;
+			}
 			//Look for all the messages we have loaded
 			const blocked = document.querySelectorAll('[class^="message-2CShn3 cozyMessage-1DWF9U');
 			//For each message...
